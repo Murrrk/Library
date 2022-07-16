@@ -9,8 +9,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
-@CrossOrigin(origins = "http://localhost:8081")
+@CrossOrigin(origins = "http://localhost:8080")
 @RestController
 @RequestMapping("/api")
 public class Controller {
@@ -18,7 +19,7 @@ public class Controller {
     Repository repository;
 
     @GetMapping("/books")
-    public ResponseEntity<List<Book>> getAllBooks(@RequestParam(required = true) String title){
+    public ResponseEntity<List<Book>> getAllBooks(@RequestParam(required = false) String title){
         try {
             List<Book> books = new ArrayList<Book>();
 
@@ -36,4 +37,15 @@ public class Controller {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
+    @GetMapping("/books/{id}")
+    public ResponseEntity<Book> getBookId(@PathVariable("id") Integer id) {
+        Optional<Book> bookData = repository.findById(id);
+        if (bookData.isPresent()) {
+            return new ResponseEntity<>(bookData.get(), HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
 }

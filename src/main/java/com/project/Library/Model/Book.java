@@ -1,10 +1,19 @@
 package com.project.Library.Model;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import java.time.LocalDate;
 
 import javax.persistence.*;
 @Entity
 @Table(name = "books")
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Book {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -25,67 +34,6 @@ public class Book {
 
 	@Column(name = "dateOfArrival")
 	private LocalDate dateOfArrival;
-
-
-	public Book() {
-	}
-
-	public Book(long id, String title, String iban, String description, Author aut, LocalDate dateOfArrival) {
-		this.id = id;
-		this.title = title;
-		this.iban = iban;
-		this.description = description;
-		this.aut = aut;
-		this.dateOfArrival = dateOfArrival;
-	}
-
-	public long getId() {
-		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
-	}
-
-	public String getTitle() {
-		return title;
-	}
-
-	public void setTitle(String title) {
-		this.title = title;
-	}
-
-	public String getIban() {
-		return iban;
-	}
-
-	public void setIban(String iban) {
-		this.iban = iban;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-	public Author getAut() {
-		return aut;
-	}
-
-	public void setAut(Author aut) {
-		this.aut = aut;
-	}
-
-	public LocalDate getDateOfArrival() {
-		return dateOfArrival;
-	}
-
-	public void setDateOfArrival(LocalDate dateOfArrival) {
-		this.dateOfArrival = dateOfArrival;
-	}
 
 	@Override
 	public String toString() {
