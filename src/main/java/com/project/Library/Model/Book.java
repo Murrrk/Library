@@ -5,9 +5,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDate;
-
 import javax.persistence.*;
+import java.time.LocalDate;
 @Entity
 @Table(name = "books")
 @Getter
@@ -17,18 +16,20 @@ import javax.persistence.*;
 public class Book {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long id;
+	@Column(name = "id")
+	private Long id;
 	
 	@Column(name = "title")
 	private String title;
 	
-	@Column(name = "iban")
-	private String iban;
+	@Column(name = "isbn")
+	private String isbn;
 	
 	@Column(name = "description")
 	private String description;
 	
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "author")
 	private Author aut;
 
 
@@ -40,7 +41,7 @@ public class Book {
 		return "Book{" +
 				"id=" + id +
 				", title='" + title + '\'' +
-				", iban='" + iban + '\'' +
+				", isbn='" + isbn + '\'' +
 				", description='" + description + '\'' +
 				", aut=" + aut +
 				", dateOfArrival=" + dateOfArrival +

@@ -5,8 +5,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDate;
 import javax.persistence.*;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "authors")
@@ -18,7 +18,8 @@ import javax.persistence.*;
 public class Author {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long a_id;
+	@Column(name = "id")
+	private Long id;
 	
 	@Column(name = "firstName")
 	private String firstName;
@@ -33,7 +34,7 @@ public class Author {
 	private String penName;
 	
 	@Column(name = "age")
-	private int age;
+	private Integer age;
 	
 	@Column(name = "birthday")
 	private LocalDate birthday;
@@ -45,7 +46,7 @@ public class Author {
 	@Override
 	public String toString() {
 		return "Author{" +
-				"a_id=" + a_id +
+				"id=" + id +
 				", firstName='" + firstName + '\'' +
 				", surname='" + surname + '\'' +
 				", lastName='" + lastName + '\'' +
