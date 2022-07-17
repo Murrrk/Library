@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-@CrossOrigin(origins = "http://localhost:8080")
+@CrossOrigin(origins = "http://localhost:8081")
 @RestController
 @RequestMapping("/api")
 public class Controller {
@@ -39,7 +39,7 @@ public class Controller {
     }
 
     @GetMapping("/books/{id}")
-    public ResponseEntity<Book> getBookId(@PathVariable("id") Integer id) {
+    public ResponseEntity<Book> getBookId(@PathVariable("id") Long id) {
         Optional<Book> bookData = repository.findById(id);
         if (bookData.isPresent()) {
             return new ResponseEntity<>(bookData.get(), HttpStatus.OK);
