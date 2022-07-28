@@ -36,6 +36,7 @@ public class Book {
 	@Column(name = "dateOfArrival")
 	private LocalDate dateOfArrival;
 
+
 	@Override
 	public String toString() {
 		return "Book{" +
