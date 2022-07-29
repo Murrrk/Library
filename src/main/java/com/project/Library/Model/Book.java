@@ -1,9 +1,6 @@
 package com.project.Library.Model;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -13,6 +10,7 @@ import java.time.LocalDate;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
 public class Book {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -36,16 +34,4 @@ public class Book {
 	@Column(name = "dateOfArrival")
 	private LocalDate dateOfArrival;
 
-
-	@Override
-	public String toString() {
-		return "Book{" +
-				"id=" + id +
-				", title='" + title + '\'' +
-				", isbn='" + isbn + '\'' +
-				", description='" + description + '\'' +
-				", aut=" + aut +
-				", dateOfArrival=" + dateOfArrival +
-				'}';
-	}
 }

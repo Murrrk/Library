@@ -4,6 +4,7 @@ import com.project.Library.DTO.BookDTO;
 import com.project.Library.Model.Book;
 import com.project.Library.Repo.BookRepository;
 import com.project.Library.Service.BookService;
+import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,14 +14,12 @@ import java.util.List;
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/api")
+@AllArgsConstructor
 public class BookController {
 
-
     private final BookService bookService;
+    private final BookRepository bookRepository;
 
-    public BookController(BookService bookService) {
-        this.bookService = bookService;
-    }
 
     @GetMapping("/books")
     public ResponseEntity<List<BookDTO>> getAllBooks(@RequestParam(required = false) String title){
@@ -32,13 +31,13 @@ public class BookController {
         return new ResponseEntity<>(bookService.getBookId(id), HttpStatus.OK);
     }
 
-    @PostMapping("/books")
-    public ResponseEntity<BookDTO> createBook(@RequestBody BookDTO bookDTO) {
+    @PostMapping("/books/add")
+    public ResponseEntity<BookDTO> createBook(@RequestBody BookDTO newBook) {
         try {
-            BookDTO _book = BookRepository
-                    .save(new BookDTO(bookDTO.getId(),bookDTO.getTitle(), bookDTO.getIsbn(), bookDTO.getDescription(),
-                            bookDTO.getAut(), bookDTO.getDateOfArrival(), false));
-            return new ResponseEntity<>(_book, HttpStatus.CREATED);
+
+            BookDTO book = bookRepository.save(newBook);
+
+            return new ResponseEntity<>(book, HttpStatus.CREATED);
         } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }

@@ -1,9 +1,6 @@
 package com.project.Library.Model;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -14,6 +11,7 @@ import java.time.LocalDate;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
 
 public class Author {
 	@Id
@@ -42,18 +40,4 @@ public class Author {
 	@Column(name = "summary")
 	private String summary;
 
-
-	@Override
-	public String toString() {
-		return "Author{" +
-				"id=" + id +
-				", firstName='" + firstName + '\'' +
-				", surname='" + surname + '\'' +
-				", lastName='" + lastName + '\'' +
-				", penName='" + penName + '\'' +
-				", age=" + age +
-				", birthday=" + birthday +
-				", summary='" + summary + '\'' +
-				'}';
-	}
 }

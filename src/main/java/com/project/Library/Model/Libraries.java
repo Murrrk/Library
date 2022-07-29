@@ -1,9 +1,6 @@
 package com.project.Library.Model;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -13,6 +10,7 @@ import javax.persistence.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
 
 public class Libraries {
     @Id
@@ -28,14 +26,4 @@ public class Libraries {
 
     @Column(name = "description")
     private String description;
-
-    @Override
-    public String toString() {
-        return "Libraries{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", address='" + address + '\'' +
-                ", description='" + description + '\'' +
-                '}';
-    }
 }
