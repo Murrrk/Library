@@ -47,11 +47,7 @@ public class BookService {
         return returnBook;
     }
 
-    //public BookDTO deleteBook(Long id) {
-      //  return bookMapper.toDTO(bookRepository.deleteById(id));
-    //}
-
-    public Boolean deleteBook(Long id) {
+    public Boolean deleteBook(Integer id) {
         bookRepository.deleteById(id);
         return true;
     }

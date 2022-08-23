@@ -11,7 +11,7 @@ import java.time.LocalDate;
 @Builder
 public class BookDTO {
 
-    private Long id;
+    private Integer id;
     private String title;
     private String isbn;
     private String description;
