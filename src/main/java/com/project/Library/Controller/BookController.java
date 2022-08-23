@@ -1,25 +1,22 @@
 package com.project.Library.Controller;
 
 import com.project.Library.DTO.BookDTO;
-import com.project.Library.Model.Book;
-import com.project.Library.Repo.BookRepository;
 import com.project.Library.Service.BookService;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@CrossOrigin(origins = "http://localhost:4200")
+
 @RestController
 @RequestMapping("/api")
 @AllArgsConstructor
 public class BookController {
 
     private final BookService bookService;
-    private final BookRepository bookRepository;
-
 
     @GetMapping("/books")
     public ResponseEntity<List<BookDTO>> getAllBooks(@RequestParam(required = false) String title){
@@ -32,15 +29,12 @@ public class BookController {
     }
 
     @PostMapping("/books/add")
-    public ResponseEntity<BookDTO> createBook(@RequestBody BookDTO newBook) {
-        try {
-
-            BookDTO book = bookRepository.save(newBook);
-
-            return new ResponseEntity<>(book, HttpStatus.CREATED);
-        } catch (Exception e) {
-            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
-        }
+    public ResponseEntity<BookDTO> addBook(@RequestBody(required = true) BookDTO book) {
+        return new ResponseEntity<>(bookService.createBook(book), new HttpHeaders(), HttpStatus.OK);
     }
 
+    @DeleteMapping("/books/delete/{id}")
+    public ResponseEntity<Boolean> deleteBook(@PathVariable("id") Long id) {
+        return new ResponseEntity<>(bookService.deleteBook(id), new HttpHeaders(), HttpStatus.OK);
+    }
 }

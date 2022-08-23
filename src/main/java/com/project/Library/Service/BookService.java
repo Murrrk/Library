@@ -2,6 +2,7 @@ package com.project.Library.Service;
 
 
 import com.project.Library.DTO.BookDTO;
+import com.project.Library.Model.Book;
 import com.project.Library.Repo.BookRepository;
 import com.project.Library.Service.Mapper.BookMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,4 +39,21 @@ public class BookService {
     public BookDTO getBookId(@PathVariable("id") Long id) {
         return bookMapper.toDTO(bookRepository.findById(id));
     }
+
+    public BookDTO createBook(BookDTO book) {
+        Book entity = bookMapper.toEntity(book);
+
+        BookDTO returnBook = bookMapper.toDTO(bookRepository.save(entity));
+        return returnBook;
+    }
+
+    //public BookDTO deleteBook(Long id) {
+      //  return bookMapper.toDTO(bookRepository.deleteById(id));
+    //}
+
+    public Boolean deleteBook(Long id) {
+        bookRepository.deleteById(id);
+        return true;
+    }
+
 }
