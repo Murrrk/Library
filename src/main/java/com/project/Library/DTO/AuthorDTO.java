@@ -3,6 +3,7 @@ package com.project.Library.DTO;
 import lombok.*;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Getter
 @Setter
@@ -19,5 +20,7 @@ public class AuthorDTO {
     private Integer age;
     private LocalDate birthday;
     private String summary;
+
+    private List<BookDTO> books;
 
 }
