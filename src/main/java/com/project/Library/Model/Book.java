@@ -31,7 +31,7 @@ public class Book {
 	@JoinTable(name = "authors_books",
 			joinColumns = @JoinColumn(name = "book_id"),
 			inverseJoinColumns = @JoinColumn(name = "author_id"))
-	private Author aut;
+	private Author author;
 
 
 	@Column(name = "dateOfArrival")

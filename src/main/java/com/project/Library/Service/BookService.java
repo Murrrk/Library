@@ -64,9 +64,14 @@ public class BookService {
         entity.setIsbn(book.getIsbn());
         entity.setDescription(book.getDescription());
         entity.setDateOfArrival(book.getDateOfArrival());
-        entity.setAut(returnBook.getAut());
+        entity.setAuthor(returnBook.getAuthor());
 
         return bookMapper.toDTO(bookRepository.save(entity));
+    }
+
+    public List<BookDTO> getAllBooksByAuthor(Integer id) {
+        List<BookDTO> books = bookRepository.findAllByAuthorId(id).stream().map(bookMapper::toDTO).collect(Collectors.toList());
+        return books;
     }
 
 }

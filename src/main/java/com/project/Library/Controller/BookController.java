@@ -43,4 +43,8 @@ public class BookController {
         return new ResponseEntity<>(bookService.updateBook(book, id), new HttpHeaders(), HttpStatus.OK);
     }
 
+    @GetMapping("/books/author/{id}")
+    public ResponseEntity<List<BookDTO>> getAllBooksByAuthor(@PathVariable("id") Integer id) {
+        return new ResponseEntity<>(bookService.getAllBooksByAuthor(id), new HttpHeaders(), HttpStatus.OK);
+    }
 }

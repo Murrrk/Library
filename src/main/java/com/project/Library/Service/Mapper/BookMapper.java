@@ -18,7 +18,7 @@ public class BookMapper implements iMapper<BookDTO, Book> {
                 .title(entity.getTitle())
                 .isbn(entity.getIsbn())
                 .description(entity.getDescription())
-                .aut(authorMapper.toDTO(entity.getAut()))
+                .aut(authorMapper.toDTO(entity.getAuthor()))
                 .dateOfArrival(entity.getDateOfArrival())
                 .build();
     }
@@ -36,7 +36,7 @@ public class BookMapper implements iMapper<BookDTO, Book> {
         book.setTitle(DTO.getTitle());
         book.setIsbn(DTO.getIsbn());
         book.setDescription(DTO.getDescription());
-        book.setAut(authorMapper.toEntity(DTO.getAut()));
+        book.setAuthor(authorMapper.toEntity(DTO.getAut()));
         book.setDateOfArrival(DTO.getDateOfArrival());
         return book;
     }
