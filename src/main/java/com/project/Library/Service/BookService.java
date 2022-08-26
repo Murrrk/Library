@@ -52,4 +52,21 @@ public class BookService {
         return true;
     }
 
+    public BookDTO updateBook(BookDTO book, Integer id) {
+        Book entity = bookRepository.findById(id).orElse(null);
+        if(entity == null){
+            return null;
+        }
+
+        Book returnBook = bookMapper.toEntity(book);
+
+        entity.setTitle(book.getTitle());
+        entity.setIsbn(book.getIsbn());
+        entity.setDescription(book.getDescription());
+        entity.setDateOfArrival(book.getDateOfArrival());
+        entity.setAut(returnBook.getAut());
+
+        return bookMapper.toDTO(bookRepository.save(entity));
+    }
+
 }

@@ -11,7 +11,7 @@ import java.time.LocalDate;
 @Builder
 public class AuthorDTO {
 
-    private Long id;
+    private Integer id;
     private String firstName;
     private String surname;
     private String lastName;

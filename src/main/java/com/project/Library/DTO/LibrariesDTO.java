@@ -9,7 +9,7 @@ import lombok.*;
 @Builder
 public class LibrariesDTO {
 
-    private Long id;
+    private Integer id;
     private String name;
     private String address;
     private String description;

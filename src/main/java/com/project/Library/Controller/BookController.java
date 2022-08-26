@@ -37,4 +37,10 @@ public class BookController {
     public ResponseEntity<Boolean> deleteBook(@PathVariable("id") Integer id) {
         return new ResponseEntity<>(bookService.deleteBook(id), new HttpHeaders(), HttpStatus.OK);
     }
+
+    @PutMapping("/books/update/{id}")
+    public ResponseEntity<BookDTO> updateBook(@RequestBody BookDTO book, @PathVariable("id") Integer id) {
+        return new ResponseEntity<>(bookService.updateBook(book, id), new HttpHeaders(), HttpStatus.OK);
+    }
+
 }
