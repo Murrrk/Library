@@ -1,4 +1,4 @@
-package com.project.Library.Service.Mapper;
+package com.project.Library.Mapper;
 
 
 public interface iMapper<T,U> {

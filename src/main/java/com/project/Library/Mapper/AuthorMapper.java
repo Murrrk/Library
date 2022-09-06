@@ -1,4 +1,4 @@
-package com.project.Library.Service.Mapper;
+package com.project.Library.Mapper;
 
 import com.project.Library.DTO.AuthorDTO;
 import com.project.Library.Model.Author;

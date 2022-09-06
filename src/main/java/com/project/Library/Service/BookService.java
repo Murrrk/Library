@@ -4,7 +4,7 @@ package com.project.Library.Service;
 import com.project.Library.DTO.BookDTO;
 import com.project.Library.Model.Book;
 import com.project.Library.Repo.BookRepository;
-import com.project.Library.Service.Mapper.BookMapper;
+import com.project.Library.Mapper.BookMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -36,8 +36,8 @@ public class BookService {
 
     }
 
-    public BookDTO getBookId(@PathVariable("id") Long id) {
-        return bookMapper.toDTO(bookRepository.findById(id));
+    public BookDTO getBookId(@PathVariable("id") Integer id) {
+        return bookMapper.toDTO(bookRepository.findById(id).orElse(null));
     }
 
     public BookDTO createBook(BookDTO book) {

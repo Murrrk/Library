@@ -12,38 +12,38 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/book")
 @AllArgsConstructor
 public class BookController {
 
     private final BookService bookService;
 
-    @GetMapping("/books")
+    @GetMapping("/all")
     public ResponseEntity<List<BookDTO>> getAllBooks(@RequestParam(required = false) String title){
         return new ResponseEntity<>(bookService.getAllBooks(title), HttpStatus.OK);
     }
 
-    @GetMapping("/books/{id}")
-    public ResponseEntity<BookDTO> getBookId(@PathVariable("id") Long id) {
+    @GetMapping("/{id}")
+    public ResponseEntity<BookDTO> getBookId(@PathVariable("id") Integer id) {
         return new ResponseEntity<>(bookService.getBookId(id), HttpStatus.OK);
     }
 
-    @PostMapping("/books/add")
+    @PostMapping("/add")
     public ResponseEntity<BookDTO> addBook(@RequestBody(required = true) BookDTO book) {
         return new ResponseEntity<>(bookService.createBook(book), new HttpHeaders(), HttpStatus.OK);
     }
 
-    @DeleteMapping("/books/delete/{id}")
+    @DeleteMapping("delete/{id}")
     public ResponseEntity<Boolean> deleteBook(@PathVariable("id") Integer id) {
         return new ResponseEntity<>(bookService.deleteBook(id), new HttpHeaders(), HttpStatus.OK);
     }
 
-    @PutMapping("/books/update/{id}")
+    @PutMapping("update/{id}")
     public ResponseEntity<BookDTO> updateBook(@RequestBody BookDTO book, @PathVariable("id") Integer id) {
         return new ResponseEntity<>(bookService.updateBook(book, id), new HttpHeaders(), HttpStatus.OK);
     }
 
-    @GetMapping("/books/author/{id}")
+    @GetMapping("/author/{id}")
     public ResponseEntity<List<BookDTO>> getAllBooksByAuthor(@PathVariable("id") Integer id) {
         return new ResponseEntity<>(bookService.getAllBooksByAuthor(id), new HttpHeaders(), HttpStatus.OK);
     }

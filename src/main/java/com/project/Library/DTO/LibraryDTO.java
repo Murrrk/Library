@@ -7,7 +7,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class LibrariesDTO {
+public class LibraryDTO {
 
     private Integer id;
     private String name;

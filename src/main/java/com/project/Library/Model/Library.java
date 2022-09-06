@@ -12,7 +12,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @ToString
 
-public class Libraries {
+public class Library {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
